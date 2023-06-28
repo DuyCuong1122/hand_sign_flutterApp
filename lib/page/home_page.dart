@@ -1,16 +1,14 @@
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
-// import 'lib\\api\\speech_api.dart';
-// import 'main.dart';
-// import 'package:speech_to_text_example/widget/substring_highlighted.dart';
-
 import '../api/speech_api.dart';
 import '../main.dart';
 import '../utils.dart';
 import '../widget/substring_highlighted.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -24,10 +22,16 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           title: Text(MyApp.title),
           centerTitle: true,
+          leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(context); // Điều hướng trở lại trang trước đó
+          },
+        ),
           actions: [
             Builder(
               builder: (context) => IconButton(
-                icon: Icon(Icons.content_copy),
+                icon: const Icon(Icons.content_copy),
                 onPressed: () async {
                   await FlutterClipboard.copy(text);
 
@@ -45,12 +49,12 @@ class _HomePageState extends State<HomePage> {
           child: SubstringHighlight(
             text: text,
             terms: Command.all,
-            textStyle: TextStyle(
+            textStyle: const TextStyle(
               fontSize: 32.0,
               color: Colors.black,
               fontWeight: FontWeight.w400,
             ),
-            textStyleHighlight: TextStyle(
+            textStyleHighlight: const TextStyle(
               fontSize: 32.0,
               color: Colors.red,
               fontWeight: FontWeight.w400,
@@ -63,8 +67,8 @@ class _HomePageState extends State<HomePage> {
           endRadius: 75,
           glowColor: Theme.of(context).primaryColor,
           child: FloatingActionButton(
-            child: Icon(isListening ? Icons.mic : Icons.mic_none, size: 36),
             onPressed: toggleRecording,
+            child: Icon(isListening ? Icons.mic : Icons.mic_none, size: 36),
           ),
         ),
       );
@@ -75,7 +79,7 @@ class _HomePageState extends State<HomePage> {
           setState(() => this.isListening = isListening);
 
           if (!isListening) {
-            Future.delayed(Duration(seconds: 1), () {
+            Future.delayed(const Duration(seconds: 2), () {
               Utils.scanText(text);
             });
           }

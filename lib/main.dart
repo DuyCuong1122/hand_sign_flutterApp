@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'page/home_page.dart';
+import 'splash_screen.dart';
 
 
 Future main() async {
@@ -15,13 +14,13 @@ Future main() async {
 }
 
 class MyApp extends StatelessWidget {
-  static final String title = 'Speech to Text';
+  static const String title = 'Speech to Text';
 
   @override
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         title: title,
         theme: ThemeData(primarySwatch: Colors.purple),
-        home: HomePage(),
+        home: SplashScreen(),
       );
 }
