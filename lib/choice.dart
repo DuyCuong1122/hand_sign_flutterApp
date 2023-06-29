@@ -26,7 +26,7 @@ class _choiceState extends State<choice> {
           children: [
             ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const HomePage()),
                   );
@@ -56,9 +56,10 @@ class _choiceState extends State<choice> {
                 child: const Text('Speech to text')),
             ElevatedButton(
                 onPressed: () {
-                  Navigator.pushReplacement(
+                  Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const imageToText()),
+                    MaterialPageRoute(
+                        builder: (context) => const imageToText()),
                   );
                 },
                 style: ButtonStyle(
