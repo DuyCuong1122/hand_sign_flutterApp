@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:test1/camera_view.dart';
 
 class imageToText extends StatefulWidget {
   const imageToText({super.key});
@@ -13,19 +14,16 @@ class _imageToTextState extends State<imageToText> {
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
-        title: const Text("Image to text"),
+        title: const Text("Video detection"),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context); // Điều hướng trở lại trang trước đó
           },
         ),
       ),
-      body: const Center(
-        child: Text(
-            "Module which uses AI to detect hand sign to text is developing ..."),
-      ),
+      body: const CameraView(),
     ));
   }
 }
